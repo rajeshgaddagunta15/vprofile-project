@@ -9,6 +9,8 @@ services:
       - "3306:3306"
     volumes:
       - vprodbdata:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=vprodbpass
 
   vprocache01:
     image: memcached
@@ -21,7 +23,7 @@ services:
     container_name: vpromq01
     ports:
       - "15672:15672"
-    ENV:
+    environment:
       - RABBITMQ-DEFAULT_USER=guest
       - RABBITMQ-DEFAULT_PASS=guest
   
